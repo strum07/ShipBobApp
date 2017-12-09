@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using ShipBobApp.Data;
+using ShipBobApp.Models;
 
 namespace ShipBobApp
 {
@@ -22,6 +25,9 @@ namespace ShipBobApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddDbContext<ShipBobAppContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("ShipBobAppContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
