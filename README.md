@@ -6,9 +6,9 @@
 
 Use these commands in PMC
 
-Install-Package Microsoft.EntityFrameworkCore.Tools
-Add-Migration Initial
-Update-Database
+#Install-Package Microsoft.EntityFrameworkCore.Tools
+#Add-Migration Initial
+#Update-Database
 
 You should see a database populate in the SQL Explorer
 
