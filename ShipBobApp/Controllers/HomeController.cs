@@ -29,6 +29,13 @@ namespace ShipBobApp.Controllers
             return View();
         }
 
+        public IActionResult Testing()
+        {
+            ViewData["Message"] = "Testing";
+
+            return View();
+        }
+
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Testing";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Testing</h2>
+
+
+<p>The list will only consists of names matching the filter.</p>
+
+<div ng-app="myApp" ng-controller="customersCtrl"> 
+
+    <table>
+        <tr ng-repeat="x in names">
+            <td>{{ x }}</td>
+            <td>{{ x }}</td>
+        </tr>
+    </table>
+
+</div>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('customersCtrl', function($scope, $http, $log) {
+        $http.get("localhost:7777/api/users1")
+            .then(function(response) {
+                $scope.names = response.data;
+                $log.info(response);
+            });
+    });
+</script>
+
+<hr />
+
