@@ -11,24 +11,24 @@ using ShipBobApp.Models;
 namespace ShipBobApp.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Orders1")]
-    public class Orders1Controller : Controller
+    [Route("api/OrdersAPI")]
+    public class OrdersAPIController : Controller
     {
         private readonly ShipBobAppContext _context;
 
-        public Orders1Controller(ShipBobAppContext context)
+        public OrdersAPIController(ShipBobAppContext context)
         {
             _context = context;
         }
 
-        // GET: api/Orders1
+        // GET: api/OrdersAPI
         [HttpGet]
         public IEnumerable<Order> GetOrders()
         {
             return _context.Orders;
         }
 
-        // GET: api/Orders1/5
+        // GET: api/OrdersAPI/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetOrder([FromRoute] int id)
         {
@@ -47,7 +47,7 @@ namespace ShipBobApp.Controllers
             return Ok(order);
         }
 
-        // PUT: api/Orders1/5
+        // PUT: api/OrdersAPI/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrder([FromRoute] int id, [FromBody] Order order)
         {
@@ -82,7 +82,7 @@ namespace ShipBobApp.Controllers
             return NoContent();
         }
 
-        // POST: api/Orders1
+        // POST: api/OrdersAPI
         [HttpPost]
         public async Task<IActionResult> PostOrder([FromBody] Order order)
         {
@@ -97,7 +97,7 @@ namespace ShipBobApp.Controllers
             return CreatedAtAction("GetOrder", new { id = order.OrderId }, order);
         }
 
-        // DELETE: api/Orders1/5
+        // DELETE: api/OrdersAPI/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteOrder([FromRoute] int id)
         {

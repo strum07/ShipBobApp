@@ -11,24 +11,24 @@ using ShipBobApp.Models;
 namespace ShipBobApp.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Users1")]
-    public class Users1Controller : Controller
+    [Route("api/UsersAPI")]
+    public class UsersAPIController : Controller
     {
         private readonly ShipBobAppContext _context;
 
-        public Users1Controller(ShipBobAppContext context)
+        public UsersAPIController(ShipBobAppContext context)
         {
             _context = context;
         }
 
-        // GET: api/Users1
+        // GET: api/UsersAPI
         [HttpGet]
         public IEnumerable<User> GetUsers()
         {
             return _context.Users;
         }
 
-        // GET: api/Users1/5
+        // GET: api/UsersAPI/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUser([FromRoute] int id)
         {
@@ -47,7 +47,7 @@ namespace ShipBobApp.Controllers
             return Ok(user);
         }
 
-        // PUT: api/Users1/5
+        // PUT: api/UsersAPI/5
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser([FromRoute] int id, [FromBody] User user)
         {
@@ -82,7 +82,7 @@ namespace ShipBobApp.Controllers
             return NoContent();
         }
 
-        // POST: api/Users1
+        // POST: api/UsersAPI
         [HttpPost]
         public async Task<IActionResult> PostUser([FromBody] User user)
         {
@@ -97,7 +97,7 @@ namespace ShipBobApp.Controllers
             return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
-        // DELETE: api/Users1/5
+        // DELETE: api/UsersAPI/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser([FromRoute] int id)
         {
