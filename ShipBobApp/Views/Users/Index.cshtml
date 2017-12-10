@@ -7,22 +7,6 @@
 
 <h2>Index</h2>
 
-
-<h2>Testing</h2>
-
-
-<div ng-app="myApp" ng-controller="customersCtrl">
-    <p><input type="text" ng-model="test"></p>
-   
-    <table>
-        <tr ng-repeat="x in names | filter:test">
-            <td>{{ x.fullName }}</td>
-          
-        </tr>
-    </table>
-
-</div>
-
 <script>
     var app = angular.module('myApp', []);
     app.controller('customersCtrl', function($scope, $http) {
@@ -32,6 +16,25 @@
 </script>
 
 <p>The list will only consists of names matching the filter.</p>
+
+
+
+
+
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+            
+        </p>
+    </div>
+</form>
+
+
 
 
 <hr />

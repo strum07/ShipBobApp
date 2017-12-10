@@ -5,6 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using ShipBobApp.Data;
 using ShipBobApp.Models;
 
@@ -20,10 +27,47 @@ namespace ShipBobApp.Controllers
         }
 
         // GET: Orders
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(
+            string sortOrder,
+            string currentFilter,
+            string searchString,
+            int? page)
         {
-            var shipBobAppContext = _context.Orders.Include(o => o.Customer);
-            return View(await shipBobAppContext.ToListAsync());
+
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+    
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var search = from s in _context.Orders.Include(o => o.Customer)
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                search = search.Where(s => s.RecipientName.Contains(searchString)
+                                               || s.Customer.FullName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "recipientname":
+                    search = search.OrderByDescending(s => s.RecipientName);
+                    break;
+              
+                default:
+                    search = search.OrderBy(s => s.Customer.FullName);
+                    break;
+            }   
+
+            return View(await search.ToListAsync());
         }
 
         // GET: Orders/Details/5
