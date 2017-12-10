@@ -5,13 +5,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using ShipBobApp.Data;
 using ShipBobApp.Models;
 
@@ -58,7 +51,7 @@ namespace ShipBobApp.Controllers
             }
             switch (sortOrder)
             {
-                case "recipientname":
+                case "NameSortParm":
                     search = search.OrderByDescending(s => s.RecipientName);
                     break;
               

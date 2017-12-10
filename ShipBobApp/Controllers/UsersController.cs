@@ -20,9 +20,46 @@ namespace ShipBobApp.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder,
+            string currentFilter,
+            string searchString,
+            int? page)
         {
-            return View(await _context.Users.ToListAsync());
+
+            ViewData["CurrentSort"] = sortOrder;
+            ViewData["NameSortParm"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewData["CurrentFilter"] = searchString;
+
+            var search = from s in _context.Users
+                select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                search = search.Where(s => s.FirstName.Contains(searchString)
+                                           || s.LastName.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "NameSortParm":
+                    search = search.OrderByDescending(s => s.FirstName);
+                    break;
+
+                default:
+                    search = search.OrderBy(s => s.LastName);
+                    break;
+            }
+
+            return View(await search.ToListAsync());
         }
 
         // GET: Users/Details/5
