@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ShipBobApp.Models.Order>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Order Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,6 +10,34 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["currentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+<thead>
+<tr>
+    <th>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Last Name</a>
+    </th>
+    <th>
+        First Name
+    </th>
+    <th>
+        <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Enrollment Date</a>
+    </th>
+    <th></th>
+</tr>
+</thead>
+
+
+
 <table class="table">
     <thead>
         <tr>

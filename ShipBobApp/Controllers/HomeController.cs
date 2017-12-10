@@ -15,16 +15,16 @@ namespace ShipBobApp.Controllers
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Install()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
 
-        public IActionResult Contact()
+        public IActionResult UseCase()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Use Case Notes";
 
             return View();
         }
