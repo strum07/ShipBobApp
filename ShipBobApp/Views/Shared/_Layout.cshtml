@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ShipBobApp</title>
 
-
-<environment include="Development">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" href="~/css/site.css"/>
-</environment>
-<environment exclude="Development">
-    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
-          asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
-          asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute"/>
-    <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true"/>
-</environment>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="~/js/angular.min.js"></script>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
 </head>
 <body>
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -35,12 +36,7 @@
                     
                 <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                 <li><a asp-area="" asp-controller="Home" asp-action="Install">Install Notes</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="UseCase">Use Case Notes</a></li>
-                <li><a asp-area="" asp-controller="Home" asp-action="Testing">Angular Testing</a></li>
-
-
-
-
+                <li><a asp-area="" asp-controller="Home" asp-action="Testing">User Dash - Angular</a></li>
                 <li><a asp-area="" asp-controller="Users" asp-action="Index">User Dashboard</a></li>
                 <li><a asp-area="" asp-controller="Orders" asp-action="Index">Order Dashboard</a></li>
             </ul>
