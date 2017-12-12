@@ -11,10 +11,12 @@ namespace ShipBobApp.Models
     {
 
         public int UserId { get; set; }
-
+        [Required]
         [StringLength(50, MinimumLength = 3)]
         public string FirstName { get; set; }
 
+
+        [Required]
         [StringLength(50, MinimumLength = 1)]
         public string LastName { get; set; }
 
