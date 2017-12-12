@@ -30,8 +30,12 @@ namespace ShipBobApp.Models
         [Required]
         [StringLength(25, MinimumLength = 2)]
         public string State { get; set; }
-        
+
+        [Required(ErrorMessage = "Required : Enter a valid ZipCode")]
+        [Range(00501, 99950)]
         public int ZipCode { get; set; }
+
+        //https://www.howtogeek.com/trivia/the-lowest-number-zip-code-in-the-united-states-belongs-to/
 
 
         public int UserId { get; set; }

@@ -13,8 +13,10 @@
 
 <hr />
 <div class="well">
-    <h4> <p>This list will only consist of names matching the filter below.</p></h4>
-   
+    
+    <h4>
+        <p>This list will dynamically consist of names matching the filter below.</p></h4>
+
     <div ng-app="myApp" ng-controller="customersCtrl">
 
         <input type="text" class="form-control" ng-model="searchKeyword" placeholder="Search for customers..."/>
@@ -33,9 +35,9 @@
                 <td>{{ customer.firstName }}</td>
                 <td>{{ customer.lastName }}</td>
                 <td>
-                    
-                    
-           
+
+
+
                     <a href="/Users/Edit/{{customer.userId}}">Edit</a> |
                     <a href="/Users/Details/{{customer.userId}}">Details</a> |
                     <a href="/Users/Delete/{{customer.userId}}">Delete</a>
