@@ -22,16 +22,10 @@ namespace ShipBobApp.Controllers
             return View();
         }
 
-        public IActionResult UseCase()
-        {
-            ViewData["Message"] = "Use Case Notes";
 
-            return View();
-        }
-
-        public IActionResult Testing()
+        public IActionResult AngularDash()
         {
-            ViewData["Message"] = "Testing";
+            ViewData["Message"] = "Angular Dash";
 
             return View();
         }
